@@ -1,0 +1,59 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="LeadCreate">
+    <!-- Preparation of lead object with fields-->
+    <aura:attribute name="headerText" type="String" default="default Header" />
+    <aura:attribute name="leadObj" type="Lead"  default="{'sobjectType':'lead',
+                                                         'FirstName':'',
+                                                         'LastName':'',
+                                                         'Company':'',
+                                                         'Email':''}"/> 
+    <div class="demo-only" style="height: 600px;">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal Header -->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" class="slds-modal__close" size="large" variant="bare" alternativeText="Close" onclick="{! c.closeModal }"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.headerText}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <!-- <div class="slds">-->
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="FirstName">First Name</label>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="FirstName" class="slds-input" value="{!v.leadObj.FirstName}" placeholder="First Name" />
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="LastName">Last Name</label>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="LastName" class="slds-input" value="{!v.leadObj.LastName}" placeholder="Last Name" />
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="Company">Company</label>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="Company" class="slds-input" value="{!v.leadObj.Company}" placeholder="Company" />
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="Email">Email</label>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="Email" class="slds-input" value="{!v.leadObj.Email}" placeholder="Email" />
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="slds-fom-element"> -->
+                <!-- Footer of Modal -->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="brand" label="Save" title="Save" onclick="{! c.save }" />
+                    <lightning:button variant="brand" label="Cancel" title="Cancel" onclick="{! c.closeModal }" />   
+                </footer>
+                <!--<div class="slds-form-element__control">
+                            <ui:button label="Save" press="{!c.save}"/>
+                        </div>
+                    </div>-->
+            </div>
+            <!--</div>-->
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</aura:component>
