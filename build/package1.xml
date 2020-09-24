@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>RIClaimExpiration_Batch</members>
+        <members>RIClaimExpiration_Batch1</members>
+        <members>RIClaimExpiration_Batch_Schedule</members>
+        <members>RIClaimExpiration_Batch_Schedule1</members>
+        <members>RIClaimExpNotify_Batch</members>
+        <members>ServicesCrdenControlerTest</members>
+        <members>SetInTestMethod</members>
+        <members>TestRIClaimExpiration_Batch</members>
+		<members>TestRIClaimExpiration_Batch1</members>
+        <members>TestRIClaimExpiration_Batch_Schedule</members>
+        <members>RIShedule1Test</members>
+        <members>TestRIClaimExpNotify_Batch</members>
+        <members>ServicesCrdenControler</members>
+        <members>Avaya_ViewReportTest</members>
+        <name>ApexClass</name>
+    </types>
+    <version>47.0</version>
+</Package>

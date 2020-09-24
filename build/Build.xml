@@ -1,0 +1,42 @@
+<project name="Sample usage of Salesforce Ant tasks" default="retrieveUnpackaged" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+		<target name="proxy"> 
+			<!--property name="proxy.host" value="nj.proxy.avaya.com"/>--> 
+			<!--property name="proxy.port" value="8000"/--> 
+			<!--<property name="proxy.host" value="20.198.58.158"/>--> 
+			<!--<property name="proxy.port" value="6588"/>--> 
+			<!--property name="proxy.user" value=""/>--> 
+			<!--property name="proxy.pass" value=""/>-->
+			<!-- <setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}" proxyuser="${proxy.user}" proxypassword="${proxy.pass}"/> -->
+			<!--setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}" />-->
+			</target>    
+			
+    <!-- Retrieve an unpackaged set of metadata from your org -->
+    <!-- The file unpackaged/package.xml lists what is to be retrieved -->
+    <target name="retrieveUnpackaged" depends="proxy">
+      <mkdir dir="retrieveUnpackagedF4U"/>
+      <!-- Retrieve the contents into another directory -->
+      <sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="retrieveUnpackaged" unpackaged="package1.xml" pollWaitMillis="60000" maxPoll="120"/>
+    </target>
+
+    <!-- Retrieve all the items of a particular metadata type -->
+    <target name="bulkRetrieve">
+      <sf:bulkRetrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="${sf.metadataType}" retrieveTarget="retrieveUnpackaged"/>
+    </target>
+
+ 
+
+	<!-- Retrieve the information of all items of a particular metadata type -->
+    <target name="listMetadata" depends="proxy">
+      <sf:listMetadata username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" metadataType="${sf.metadataType}" trace="true"/>
+      <!-- <sf:listMetadata username="tkshah@avaya.com.f4rtest" password="Avaya#345" serverurl="${sf.serverurl}" metadataType="${sf.metadataType}" trace="true"/> -->
+    </target>
+
+	<!-- Retrieve the information on all supported metadata type -->
+	<target name="describeMetadata">
+    <sf:describeMetadata username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" apiVersion="19.0" /> 
+  </target>
+  </project>
